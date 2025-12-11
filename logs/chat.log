@@ -1,0 +1,9 @@
+[2025-12-10 22:57:01] TalkBox WebSocket Server started...
+[2025-12-10 22:57:05] New connection: (1)
+[2025-12-10 22:57:06] User joined: Alice
+[2025-12-10 22:57:10] Message from Alice: Hello everyone!
+[2025-12-10 22:57:15] New connection: (2)
+[2025-12-10 22:57:16] User joined: Bob
+[2025-12-10 22:57:20] Message from Bob: Hi Alice!
+[2025-12-10 22:57:30] Connection 1 closed (Alice).
+[2025-12-10 22:57:30] User Alice left the chat.
