@@ -1,0 +1,21 @@
+{
+  "name": "gbowne1/talkbox",
+  "description": "TalkBox - Real-time chat application with WebSockets and REST API",
+  "type": "project",
+  "require": {
+    "php": ">=8.0",
+    "cboden/ratchet": "^0.4",
+    "symfony/routing": "^6.0",
+    "symfony/http-foundation": "^6.0",
+    "mongodb/mongodb": "^1.12"
+  },
+  "autoload": {
+    "psr-4": {
+      "TalkBox\\": "src/"
+    }
+  },
+  "scripts": {
+    "start-websocket": "php bin/websocket.php",
+    "start-http": "php bin/http.php"
+  }
+}
