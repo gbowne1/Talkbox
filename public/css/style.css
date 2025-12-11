@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* App container */
+#app {
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: #0078d7;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Login section */
+#login-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}
+
+#login-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#login-form button {
+    padding: 10px;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#login-form button:hover {
+    background: #005fa3;
+}
+
+/* Chat section */
+#chat-section {
+    flex: 1;
+    display: flex;
+    height: 100%;
+}
+
+/* User list sidebar */
+#user-list {
+    width: 25%;
+    background: #f0f2f5;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#user-list h2 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #0078d7;
+}
+
+#users {
+    list-style: none;
+}
+
+#users li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
