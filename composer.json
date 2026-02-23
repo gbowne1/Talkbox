@@ -8,8 +8,7 @@
     "cboden/ratchet": "^0.4",
     "symfony/routing": "^6.0",
     "symfony/http-foundation": "^6.0",
-    "mongodb/mongodb": "^1.19",
-    "ext-mongodb": "*"
+    "mongodb/mongodb": "^1.19"
   },
   "autoload": {
     "psr-4": {
