@@ -4,11 +4,12 @@
   "type": "project",
   "license": "MIT",
   "require": {
-    "php": ">=8.0",
+    "php": ">=8.2",
     "cboden/ratchet": "^0.4",
     "symfony/routing": "^6.0",
     "symfony/http-foundation": "^6.0",
-    "mongodb/mongodb": "^1.12"
+    "mongodb/mongodb": "^1.19",
+    "ext-mongodb": "*"
   },
   "autoload": {
     "psr-4": {
