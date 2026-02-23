@@ -2,6 +2,7 @@
   "name": "gbowne1/talkbox",
   "description": "TalkBox - Real-time chat application with WebSockets and REST API",
   "type": "project",
+  "license": "MIT",
   "require": {
     "php": ">=8.0",
     "cboden/ratchet": "^0.4",
