@@ -23,6 +23,21 @@ jobs:
           extensions: mbstring, pdo, pdo_mysql
           coverage: none
 
+      - name: Validate Database Schema
+        run: |
+          # The CI starts a MySQL service automatically if you have it in your 'services' block
+          mysql -h 127.0.0.1 -u root -e "CREATE DATABASE IF NOT EXISTS talkbox;"
+          mysql -h 127.0.0.1 -u root talkbox < database/migrations/001_create_users.sql
+          mysql -h 127.0.0.1 -u root talkbox < database/migrations/002_create_message.sql
+          mysql -h 127.0.0.1 -u root talkbox < database/migrations/003_create_usrooms.sql
+          mysql -h 127.0.0.1 -u root talkbox < database/seeds/demo_data.sql
+
+      - name: PHPStan Static Analysis
+        run: |
+          composer require --dev phpstan/phpstan
+          # Analyze everything in src and bin
+          vendor/bin/phpstan analyse src bin --level 5
+
       - name: Validate composer.json
         run: composer validate --strict
 
