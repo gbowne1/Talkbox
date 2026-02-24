@@ -20,6 +20,7 @@ class WebSocketServer implements MessageComponentInterface
     // When a new connection opens
     public function onOpen(ConnectionInterface $conn)
     {
+        /** @var \Ratchet\WebSocket\Connection $conn */
         $this->clients->attach($conn);
         echo "New connection: ({$conn->resourceId})\n";
     }
@@ -27,6 +28,8 @@ class WebSocketServer implements MessageComponentInterface
     // When a message is received
     public function onMessage(ConnectionInterface $from, $msg)
     {
+        /** @var \Ratchet\WebSocket\Connection $from */
+
         $data = json_decode($msg, true);
 
         if (!$data || !isset($data['type'])) {
@@ -71,6 +74,8 @@ class WebSocketServer implements MessageComponentInterface
     // When a connection closes
     public function onClose(ConnectionInterface $conn)
     {
+        /** @var \Ratchet\WebSocket\Connection $conn */
+
         $this->clients->detach($conn);
 
         if (isset($this->users[$conn->resourceId])) {
@@ -96,6 +101,8 @@ class WebSocketServer implements MessageComponentInterface
     // On error
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
+        /** @var \Ratchet\WebSocket\Connection $conn */
+
         echo "Error: {$e->getMessage()}\n";
         $conn->close();
     }
