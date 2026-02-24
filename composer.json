@@ -16,6 +16,9 @@
   },
   "scripts": {
     "start-websocket": "php bin/websocket.php",
-    "start-http": "php bin/http.php"
+    "start-http": "php bin/http.php",
+    "migrate": "mysql -u root -p talkbox < database/migrations/001_create_users.sql && ...",
+    "analyze": "vendor/bin/phpstan analyse src --level 5",
+    "start": "php bin/server.php"
   }
 }
