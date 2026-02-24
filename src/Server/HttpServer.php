@@ -36,17 +36,27 @@ class HttpServer
 
     public function run($port = 8081)
     {
+        // Router requires a UrlMatcherInterface, not a Closure
+        $context = new RequestContext();
+        $matcher = new UrlMatcher($this->routes, $context);
+
+        $router = new Router($matcher);
+
         $server = IoServer::factory(
-            new RatchetHttpServer(
-                new Router(function (Request $request) {
-                    return $this->handleRequest($request);
-                })
-            ),
+            new RatchetHttpServer($router),
             $port
         );
 
         echo "TalkBox HTTP Server running on port {$port}\n";
         $server->run();
+    }
+
+    /**
+     * Router calls this automatically when a route matches.
+     */
+    public function __invoke(Request $request)
+    {
+        return $this->handleRequest($request);
     }
 
     protected function handleRequest(Request $request)
@@ -59,6 +69,7 @@ class HttpServer
         try {
             $parameters = $matcher->match($request->getPathInfo());
             $controller = $parameters['_controller'];
+
             return call_user_func($controller, $request);
         } catch (\Exception $e) {
             return new Response("Not Found", 404);
@@ -71,7 +82,6 @@ class HttpServer
         $username = $request->request->get('username');
         $password = $request->request->get('password');
 
-        // TODO: validate against database
         if ($username === 'demo' && $password === 'demo') {
             return new Response(json_encode([
                 'success' => true,
@@ -88,7 +98,6 @@ class HttpServer
     // Example controller: user list
     public function users(Request $request)
     {
-        // TODO: fetch from database or WebSocketServer
         $users = ['Alice', 'Bob', 'Charlie'];
 
         return new Response(json_encode([
